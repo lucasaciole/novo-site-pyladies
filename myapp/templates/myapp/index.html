@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="{% static 'css/animate.css' %}">
   <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'css/pyladies.css' %}">
   <link rel="stylesheet" href="{% static 'js/rs-plugin/css/settings.css' %}">
   <link rel="stylesheet" href="{% static 'css/berry.css' %}">
 
@@ -138,7 +139,7 @@
             <!-- SLIDE 2 -->
             <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
               <!-- MAIN IMAGE -->
-              <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+              <img src="{% static 'img/transparent.png' %}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
               <!-- LAYERS -->
               <!-- LAYER NR. 1 -->
               <div class="tp-caption lfb fadeout hidden-xs"
@@ -149,7 +150,7 @@
               data-speed="1000"
               data-start="700"
               data-easing="Power4.easeOut">
-              <img src="img/berry/Slides/geek.png"alt=""/>
+              <img src="{% static 'img/berry/Slides/geek.png' %}"alt=""/>
             </div>
 
 
@@ -164,7 +165,7 @@
           <!-- SLIDE 3 -->
           <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
             <!-- MAIN IMAGE -->
-            <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+            <img src="{% static 'img/transparent.png' %}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
             <!-- LAYERS -->
             <!-- LAYER NR. 1 -->
             <div class="tp-caption customin customout hidden-xs"
@@ -177,7 +178,7 @@
             data-speed="1000"
             data-start="700"
             data-easing="Power4.easeOut">
-            <img src="img/berry/Slides/face2.png" alt="">
+            <img src="{% static 'img/berry/Slides/face2.png' %}" alt="">
           </div><!-- visible é o q vai aparecer no mobile-->
           <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="-170" data-speed="1000" data-start="1000" data-easing="Power4.easeOut">
             Visite nossa página!
@@ -274,164 +275,22 @@
                 Estudante CComputação UFSCar
               </div>
             </div>
-            <div class="media media-left feature">
-              <a class="pull-right" href="#">
-                <img src="img/berry/members/barbara.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Bárbara</h3>
-                Estudante EComputação UFSCar
-              </div>
-            </div>
-            <div class="media media-left feature">
-              <a class="pull-right" href="#">
-                <img src="img/berry/members/bia.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Bia Lima</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media media-left feature">
-              <a class="pull-right" href="#">
-                <img src="img/berry/members/bruna.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Bruna</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media media-left feature">
-              <a class="pull-right" href="#">
-                <img src="img/berry/members/camila.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Camila</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media media-left feature">
-              <a class="pull-right" href="#">
-                <img src="img/berry/members/caroline.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Caroline</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media media-left feature">
-              <a class="pull-right" href="#">
-                <img src="img/berry/members/fabio.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Fábio Schmidt</h3>
-                Estudante CComputação UNIP
-              </div>
-            </div>
-            <div class="media media-left feature">
-              <a class="pull-right" href="#">
-                <img src="img/berry/members/gabriela.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Gabriela Mattos</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media media-left feature">
-              <a class="pull-right" href="#">
-                <img src="img/berry/members/juliana.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Juliana</h3>
-                Estudante EComputação UFSCar
-              </div>
-            </div>
           </div>
           <div class="col-md-4 col-sm-4" >
             <img src="img/berry/3geek.png" class="img-responsive scrollpoint sp-effect5" alt="">
           </div>
           <div class="col-md-4 col-sm-4 scrollpoint sp-effect2">
-            <div class="media media">
-              <a class="pull-left" href="#">
-                <img src="img/berry/members/jessica.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Jéssica Caroline</h3>
-                Estudante CComputação UFSCar
+            {% for member in members %}
+              <div class="media media">
+                <a class="pull-left" href="#">
+                  <img class="img-bordered" src="/media/{{ member.photo }}"alt=""/>
+                </a>
+                <div class="media-body">
+                  <h3 class="media-heading">{{ member.name }}</h3>
+                  {{ member.course }}
+                </div>
               </div>
-            </div>
-            <div class="media feature">
-              <a class="pull-left" href="#">
-                <img src="img/berry/members/jessicaa.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Jéssica Antunes</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media feature">
-              <a class="pull-left" href="#">
-                <img src="img/berry/members/leticia.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Letícia Rostirola</h3>
-                Bacharel CComputação USP
-              </div>
-            </div>
-            <div class="media feature">
-              <a class="pull-left" href="#">
-                <img src="img/berry/members/leticiay.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Letícia Yumi</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media feature">
-              <a class="pull-left" href="#">
-                <img src="img/berry/members/lucas.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Lucas</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media feature">
-              <a class="pull-left" href="#">
-                <img src="img/berry/members/mayara.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Mayara</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media feature">
-              <a class="pull-left" href="#">
-                <img src="img/berry/members/rafaela.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Rafaela</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media feature">
-              <a class="pull-left" href="#">
-                <img src="img/berry/members/rebeca.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Rebeca Rocha</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
-            <div class="media feature">
-              <a class="pull-left" href="#">
-                <img src="img/berry/members/samara.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Samara</h3>
-                Estudante CComputação UFSCar
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
