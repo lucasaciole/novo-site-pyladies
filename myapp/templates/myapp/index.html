@@ -266,21 +266,23 @@
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-4 scrollpoint sp-effect1">
-            <div class="media media-left feature">
-              <a class="pull-right" href="#">
-                <img src="img/berry/members/ana.png"alt=""/>
-              </a>
-              <div class="media-body">
-                <h3 class="media-heading">Ana Dulce</h3>
-                Estudante CComputação UFSCar
+            {% for member in members_left %}
+              <div class="media media-left feature">
+                <a class="pull-right" href="#">
+                  <img class="img-bordered" src="/media/{{ member.photo }}"alt=""/>
+                </a>
+                <div class="media-body">
+                  <h3 class="media-heading">{{ member.name }}</h3>
+                  {{ member.course }}
+                </div>
               </div>
-            </div>
+            {% endfor %}
           </div>
           <div class="col-md-4 col-sm-4" >
-            <img src="img/berry/3geek.png" class="img-responsive scrollpoint sp-effect5" alt="">
+            <img src="{% static 'img/berry/3geek.png' %}" class="img-responsive scrollpoint sp-effect5" alt="">
           </div>
           <div class="col-md-4 col-sm-4 scrollpoint sp-effect2">
-            {% for member in members %}
+            {% for member in members_right %}
               <div class="media media">
                 <a class="pull-left" href="#">
                   <img class="img-bordered" src="/media/{{ member.photo }}"alt=""/>
