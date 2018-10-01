@@ -1,6 +1,6 @@
 img.img-bordered {
     border-radius: 50%;
-    border: 3px solid red;
+    border: 4px solid #cc6698;
     width: 100px;
     height: 100px;
 }
